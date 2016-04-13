@@ -599,6 +599,7 @@ var styles = StyleSheet.create({
 
     seeBtn: {
         color: '#e54847',
+
         fontSize: 11,
         borderColor: '#e54847',
         borderWidth: 1,
