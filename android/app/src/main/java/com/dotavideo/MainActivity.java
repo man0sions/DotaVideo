@@ -4,7 +4,6 @@ import com.facebook.react.ReactActivity;
 import com.brentvatne.RCTVideo.ReactVideoPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.github.yamill.orientation.OrientationPackage;
-import com.smixx.reactnativeicons.ReactNativeIcons;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
 
@@ -41,8 +40,7 @@ public class MainActivity extends ReactActivity {
             new MainReactPackage(),
             new ReactVideoPackage(),
             new VectorIconsPackage(),
-            new OrientationPackage(),
-            new ReactNativeIcons()
+            new OrientationPackage()
         );
     }
 }
