@@ -8,7 +8,7 @@ var React = require('react-native');
 import {Header,Footer,Layout} from '../common/Layout';
 import {styles} from '../common/Css';
 
-import {UserVideoList} from '../component/UserVideoList';
+import UserVideoList from '../component/UserVideoList';
 var {
     View
     } = React;

@@ -5,7 +5,6 @@ import {Htag,Hlabel,Halert,BackButton,PlayBtn} from '../common/Tag';
 import {Header,Loading} from '../common/Layout';
 import Config from '../common/Config';
 import Main from '../common/Main';
-import Parallax from './Parallax';
 
 const { BlurView, VibrancyView } = require('react-native-blur');
 var { width, height } = size;
@@ -16,7 +15,6 @@ var {
     Image,
     Text,
     View,
-    ScrollView,
     ListView,
     Animated
     } = React;
@@ -30,51 +28,21 @@ var {
 
 var UserVideoList = React.createClass({
     getInitialState: function () {
-        return {
-            data: [],
-            dataSource: new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2}),
-            loading: false,
-            page: 1,
-            marginTopAnim: new Animated.Value(0),
-            isAnim:false,
-        };
+
+        var data = Main.initialListData(ListView);
+        data.marginTopAnim = new Animated.Value(0);
+
+        return data;
+
     },
 
     componentDidMount: function () {
-
-        this.loadData();
+        var url = Main.sprintf(Config.userVideo, this.props.uid,this.state.page,1);
+        Main.loadData(this, url);
     },
 
 
-    loadData: function () {
-        if (this.state.loading)
-            return;
 
-        this.setState({
-            loading: true
-        });
-        var url = "http://wx.wefi.com.cn/wxbVideos/?r=TVPlaylist/GetYokuUserPlayList&data={q:'dota',uid:'" + this.props.uid + "',od:1,cp:" + this.state.page + "}";
-        console.log(url);
-        fetch(url)
-            .then((response) => response.json())
-            .then((res) => {
-                //console.log("==>responseData",responseData);
-
-                var data = this.state.data.concat(res.data);
-                var page = this.state.page + 1;
-
-                this.setState({
-                    data: data,
-                    dataSource: this.state.dataSource.cloneWithRows(data),
-                    loading: false,
-                    page: page
-                })
-
-                //console.log('===>>fetch', this.state.data);
-
-
-            });
-    },
     onScroll: function (event) {
         var top1 = -height/3;
         var offset = event.nativeEvent.contentOffset.y ;
@@ -92,8 +60,6 @@ var UserVideoList = React.createClass({
                 var top = 0;
 
             }
-
-
             Animated.timing(
                 this.state.marginTopAnim,
                 {
@@ -109,6 +75,7 @@ var UserVideoList = React.createClass({
     },
 
     render: function () {
+        var url = Main.sprintf(Config.userVideo, this.props.uid,this.state.page,1);
 
         return (
             <View style={{flex:1}}>
@@ -116,7 +83,7 @@ var UserVideoList = React.createClass({
                 <ListView ref='list'
                           dataSource={this.state.dataSource}
                           renderRow={(rowData) => this._renderItem(rowData)}
-                          onEndReached={this.loadData}
+                          onEndReached={()=>{Main.loadData(this,url)}}
                           contentContainerStyle={styles.listContainer}
                           onScroll={this.onScroll}
                           scrollEventThrottle={16}
@@ -196,7 +163,7 @@ var UserVideoList = React.createClass({
                                 </View>
 
                                 <View style={[styles.UViconBox,styles.fRow]}>
-                                    <Text style={[styles.textGreen]}>粉丝:</Text>
+                                    <Text style={[styles.textGreen]}>播放:</Text>
                                     <Text style={[styles.Htitle]}>{row.click_count}</Text>
                                 </View>
                             </View>
@@ -210,7 +177,5 @@ var UserVideoList = React.createClass({
 });
 
 
-const Style = {
-    UserVideoList: UserVideoList
-}
-module.exports = Style;
+
+module.exports = UserVideoList;

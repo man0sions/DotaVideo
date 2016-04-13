@@ -136,7 +136,7 @@ const Loading = React.createClass({
         var size = this.props.size || 30;
         return (
             <View style={[styles.itemCenter]}>
-                <Icon name='ios-eye' size={size} color='#000'
+                <Icon name='load-d' size={size} color='#000'
                          style={{width:size,height:size,opacity:size*0.01+0.3}}/>
                 <Text style={{color:colors.default,fontSize:fontSize.small,marginBottom:10}}>{this.props.text}</Text>
             </View>

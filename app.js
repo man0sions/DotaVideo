@@ -1,60 +1,51 @@
+'use strict';
 
 var React = require('react-native');
-var Home = require('./include/tpl/home');
 var List = require('./include/tpl/list');
-var Detail = require('./include/tpl/detail');
+var List2 = require('./include/tpl/list2');
+var List3 = require('./include/tpl/list3');
 var Video = require('./include/tpl/video');
-var Authors = require('./include/tpl/Authors');
-var SplashPage = require('./include/tpl/SplashPage');
+var Users = require('./include/tpl/users');
 
 var {
-    AppRegistry,
-    StyleSheet,
-    ListView,
-    Image,
-    Text,
-    View,
-    TouchableOpacity,
-    Navigator
-
+    Navigator,
     } = React;
-//StatusBarIOS.setHidden(true);
 
-React.createClass({
+var App = React.createClass({
 
 
 
     renderScene(router, navigator){
-        console.log(router.name);
         var Component = null;this._navigator = navigator;
         switch(router.name){
-            case "SplashPage":
-                Component = SplashPage;
-                break;
-            case "home":
-                Component = Home;
-                break;
             case "list":
                 Component = List;
                 break;
-            case "detail":
-                Component = Detail;
+            case "list2":
+                Component = List2;
+                break;
+            case "list3":
+                Component = List3;
+                break;
+            case "users":
+                Component = Users;
+                break;
+
                 break;
             case "video":
                 Component = Video;
                 break;
-            case "authors":
-                Component = Authors;
-                break;
 
             default: //default view
-                Component = Home;
+                Component = List;
         }
+        //console.log("==>renderScene",router,(new Date));
+
         return <Component navigator={navigator} {...router.passProps}/>
     },
 
     componentDidMount() {
-        var navigator = this._navigator;
+        //var navigator = this._navigator;
 
     },
 
@@ -64,7 +55,7 @@ React.createClass({
     render() {
         return (
             <Navigator
-                initialRoute={{id: 'SplashPage', name: 'SplashPage'}}
+                initialRoute={{name: 'list'}}
                 renderScene={this.renderScene}
                 configureScene={(route) => {
             if (route.sceneConfig) {
@@ -76,3 +67,5 @@ React.createClass({
         );
     }
 });
+
+module.exports = App;
