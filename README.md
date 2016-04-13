@@ -35,7 +35,7 @@ ui少部分模仿开眼，其他由（tingSun ）提供支持。
 ### React-Native Modules In Using
 >  "react-native-blur": "^0.7.11",
 
->  "react-native-icons": "^0.7.1",
+>  "react-native-vector-icons": "^1.3.4",
 
 >  "react-native-lazyload": "^0.2.1",
 
