@@ -1,4 +1,7 @@
 # 一个基于react native 的dota视频app
+
+mac:
+
 ### Install
 
 
@@ -9,6 +12,7 @@ react-native run-ios
 
 ```
 
+**windows 下目前无法运行。**
 
 
 #### 目标：
