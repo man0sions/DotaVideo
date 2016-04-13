@@ -1,6 +1,5 @@
 var React = require('react-native');
-import {styles,colors,fontSize,size,Icons} from './Css';
-var { Icon } = Icons;
+import {styles,colors,fontSize,size,Icon} from './Css';
 var {width,height} = size;
 
 var {
@@ -108,13 +107,14 @@ const Halert = React.createClass({
         return (
             <View style={className}>
                 <Icon
-                    name='fontawesome|info'
+                    name='info'
                     size={14}
                     color='#fff'
                     style={{width:14,height:14}}/>
                 <Text style={{fontWeight: 'bold',fontSize:12,color:'#fff'}}>{this.props.text}</Text>
             </View>
         );
+
     }
 });
 
@@ -148,12 +148,13 @@ const BackButton = React.createClass({
         return (
             <View style={[className,this.props.style]}>
                 <Icon
-                    name='ion|ios-arrow-left'
+                    name='ios-arrow-left'
                     size={size}
                     color='#fff'
                     style={{width:size,height:size}}/>
             </View>
         );
+
     }
 });
 
@@ -172,9 +173,10 @@ const PlayBtn = React.createClass({
         return (
             <View
                 style={{paddingLeft:2.5,paddingTop:1,borderWidth:1,borderRadius:15,borderColor:'#fff',width:30,height:30,marginBottom:10}}>
-                <Icon name='ion|ios-play-outline' size={26} color='#fff' style={{width:26,height:26}}/>
+                <Icon name='ios-play-outline' size={26} color='#fff' style={{width:26,height:26}}/>
             </View>
         );
+
     }
 });
 

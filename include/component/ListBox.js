@@ -1,12 +1,11 @@
 var React = require('react-native');
 
-import {styles,userPicDef,Icons,size} from '../common/Css';
+import {styles,userPicDef,Icon,size} from '../common/Css';
 import {Loading,LoadErr} from '../common/Layout';
 import Config from '../common/Config';
 import Main from '../common/Main';
 import {BackButton} from '../common/Tag';
 
-var { Icon } = Icons;
 var {width,height} = size;
 var Orientation = require('react-native-orientation');
 Orientation.lockToPortrait(); //this will lock the view to Portrait
@@ -59,10 +58,10 @@ const ListItem = React.createClass({
                                     <View style={[styles.fColumn,styles.tRight,styles.heightS]}>
                                         <Text style={[styles.Ndate]}>{item.time}</Text>
                                         <View style={[styles.fRow,styles.fend]}>
-                                            <Icon name='ion|ios-heart-outline' size={13} color='#ff0056'
+                                            <Icon name='ios-heart-outline' size={13} color='#ff0056'
                                                   style={[styles.iconeye]}/>
                                             <Text style={[styles.Nclick]}>{item.click_count}</Text>
-                                            <Icon name='ion|ios-clock-outline' size={13} color='#333'
+                                            <Icon name='ios-clock-outline' size={13} color='#333'
                                                   style={[styles.iconeye]}/>
                                             <Text style={[styles.Ntime]}>{item.duration}</Text>
                                         </View>
@@ -71,7 +70,7 @@ const ListItem = React.createClass({
                             </View>
                         </View>
                         <Image style={[styles.ItemImg,styles.jcenter,styles.aCenter]} source={{uri:item.pic}}>
-                            <Icon name='ion|ios-play-outline' size={20} color='#fff'
+                            <Icon name='ios-play-outline' size={20} color='#fff'
                                   style={[styles.iconPlay]}/>
                         </Image>
                         <Text style={[styles.nameInfo]}>{item.name}</Text>

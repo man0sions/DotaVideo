@@ -116,60 +116,7 @@ module.exports = class VideoPlayer extends Component {
         )
     }
 
-    renderCustomSkin() {
-        const Completed = this.getCurrentTimePercentage();
-        const flexRemaining = (1 - this.getCurrentTimePercentage())*100;
-        //console.log("==>flexCompleted",this.state.currentTime,this.state.duration,this.getCurrentTimePercentage());
-        //console.log(this.props.url);
-        var url = 'http://101.200.79.153/wxbVideos/?r=site/m3u8&url=http://v.youku.com/v_show/id_XMTUwMTczNDkzNg==.html';
-        return (
-            <View style={styles.container}>
-                <TouchableOpacity style={styles.fullScreen} onPress={() => {this.setState({paused: !this.state.paused})}}>
-                    <Video source={{uri: url}}
-                           style={styles.fullScreen}
-                           rate={this.state.rate}
-                           paused={this.state.paused}
-                           volume={this.state.volume}
-                           muted={this.state.muted}
-                           resizeMode={this.state.resizeMode}
-                           onLoad={this.onLoad}
-                           onLoadStart={this.onLoadStart}
-                           onSeek={() => console.log('media seek performed')}
-                           onUpdateTime={() => console.log('media currenttime changed')}
-                           onProgress={this.onProgress}
-                           onEnd={() => {console.log('end')}}
-                           repeat={true}
-                           controls={this.state.controls}
-                    />
-                </TouchableOpacity>
-                <View style={[styles.controls]}>
-                    <View style={[styles.controlsHead,]}   >
-                        <View style={[styles.items2,]}>
-                            <TouchableOpacity onPress={() => {this.goRouter()}}>
 
-                            </TouchableOpacity>
-                            <Text style={[{color:'#fff',fontSize:13,marginTop:10,marginLeft:10}]}>{this.props.name}</Text>
-                        </View>
-
-                        <View  style={styles.items2}>
-
-                        </View>
-                    </View>
-
-                    <TouchableOpacity style={[styles.controlsCenter]} onPress={() => {this.setState({paused: !this.state.paused})}}>
-
-                    </TouchableOpacity>
-                    <View style={[styles.controlsFooter]}>
-                        <Text>{this.state.currentTime}</Text>
-                        <Slider
-                            value={Completed}
-                            onValueChange={(value) => this.setTime(value)} />
-                    </View>
-                </View>
-
-            </View>
-        );
-    }
 
     renderNativeSkin() {
         var url = this.props.url;

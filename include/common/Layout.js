@@ -1,6 +1,5 @@
 var React = require('react-native');
-import {styles,colors,fontSize,Icons,size} from './Css';
-var { Icon,Spinner } = Icons;
+import {styles,colors,fontSize,Icon,size} from './Css';
 var {width,height} = size;
 
 import Main from './Main';
@@ -31,14 +30,14 @@ const Header = React.createClass({
         return (
             <View style={[styles.header,styles.bgColor]}>
                 <View style={[styles.items3]}>
-                    <Icon name='ion|android-menu' size={20} color='#000'
+                    <Icon name='android-menu' size={20} color='#000'
                           style={[styles.commonMleft,styles.headicon]}/>
                 </View>
                 <View style={[styles.items3,styles.itemCenter]}>
                     <Text style={[styles.headtitle]}>{title}</Text>
                 </View>
                 <View style={[styles.items3,styles.itemRight]}>
-                    <Icon name='ion|ios-eye-outline' size={30} color='#000'
+                    <Icon name='ios-eye-outline' size={30} color='#000'
                           style={[styles.commonMright,styles.headicon]}/>
                 </View>
             </View>
@@ -139,7 +138,7 @@ const Loading = React.createClass({
         var size = this.props.size || 30;
         return (
             <View style={[styles.itemCenter]}>
-                <Spinner name='ion|ios-eye' size={size} color='#000'
+                <Icon name='ios-eye' size={size} color='#000'
                          style={{width:size,height:size,opacity:size*0.01+0.3}}/>
                 <Text style={{color:colors.default,fontSize:fontSize.small,marginBottom:10}}>{this.props.text}</Text>
             </View>
@@ -155,7 +154,7 @@ const LoadErr = React.createClass({
         var size = this.props.size || 30;
         return (
             <View style={[styles.itemCenter,{marginTop:height/3}]}>
-                <Icon name='ion|eye-disabled' size={size} color='#000'
+                <Icon name='eye-disabled' size={size} color='#000'
                          style={{width:size,height:size,opacity:size*0.01+0.3}}/>
                 <Text style={{color:colors.default,fontSize:fontSize.h3,marginBottom:10}}>加载失败,点击重试</Text>
             </View>

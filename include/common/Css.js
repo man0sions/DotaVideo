@@ -1,6 +1,5 @@
 var React = require('react-native');
-var Icons = require('react-native-icons');
-
+var Icon = require('react-native-vector-icons/Ionicons');
 var {
     StyleSheet,
     } = React;
@@ -610,7 +609,7 @@ module.exports = {
         height:height,
         headHeight:headHeight,
     },
-    Icons:Icons
+    Icon:Icon
 
 }
 
