@@ -7,8 +7,8 @@ import Main from '../common/Main';
 import {BackButton} from '../common/Tag';
 
 var {width,height} = size;
-var Orientation = require('react-native-orientation');
-Orientation.lockToPortrait(); //this will lock the view to Portrait
+//var Orientation = require('react-native-orientation');
+//Orientation.lockToPortrait(); //this will lock the view to Portrait
 import {
     LazyloadListView,
     LazyloadView
@@ -97,7 +97,6 @@ const ListBox = React.createClass({
 
     componentDidMount: function () {
         var url = Main.sprintf(this.props.url, this.state.page);
-        //console.log(url);
         Main.loadData(this, url);
 
     },
@@ -121,7 +120,6 @@ const ListBox = React.createClass({
     },
     _renderErrBtn(){
         var url = Main.sprintf(this.props.url, this.state.page);
-
         if(!this.state.loadErr)
            return(
                <LazyloadListView
@@ -146,6 +144,7 @@ const ListBox = React.createClass({
         );
     },
     render: function () {
+
         return (
             <View style={{flex:1}}>
                 {this._renderErrBtn()}

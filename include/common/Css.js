@@ -2,12 +2,20 @@ var React = require('react-native');
 var Icon = require('react-native-vector-icons/Ionicons');
 var {
     StyleSheet,
+    AsyncStorage,
+    Platform
     } = React;
 var Dimensions = require('Dimensions');
 var { width, height } = Dimensions.get('window');
 var pheight = height / 100;
 var pwidth = width / 100;
 var headHeight = height / 22;
+
+var androidHeightP = 0;
+if(Platform.OS=="android")
+{
+    androidHeightP=2;
+}
 /***
  * 全局公共变量,函数
  * @type {{default: string, primary: string, success: string, info: string, warning: string, danger: string}}
@@ -102,7 +110,7 @@ var styles = StyleSheet.create({
      * */
 
     header: {
-        height: pheight * 8,
+        height: pheight * (8-androidHeightP),
         width: width,
         justifyContent: 'center',
         flexDirection: 'row',
@@ -234,7 +242,7 @@ var styles = StyleSheet.create({
      * */
 
     content: {
-        height: pheight*86,
+        height: pheight*(86-androidHeightP),
         overflow: 'hidden',
         //borderWidth: 1,
         //borderColor: 'blue'

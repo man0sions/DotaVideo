@@ -8,7 +8,8 @@ import App from './app';
 var DotaVideo = React.createClass({
 
   render:function(){
-    return (
+
+      return (
         <App></App>
     );
   }

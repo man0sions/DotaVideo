@@ -1,14 +1,20 @@
 package com.dotavideo;
 
 import com.facebook.react.ReactActivity;
-import com.brentvatne.RCTVideo.ReactVideoPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
-import com.github.yamill.orientation.OrientationPackage;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
 
+
+
 import java.util.Arrays;
 import java.util.List;
+
+import android.content.Intent; // <--- import
+import android.content.res.Configuration; // <--- import
+import com.github.yamill.orientation.OrientationPackage;  // <--- import
+import com.brentvatne.react.ReactVideoPackage;
+
 
 public class MainActivity extends ReactActivity {
 
@@ -38,9 +44,9 @@ public class MainActivity extends ReactActivity {
     protected List<ReactPackage> getPackages() {
         return Arrays.<ReactPackage>asList(
             new MainReactPackage(),
-            new ReactVideoPackage(),
             new VectorIconsPackage(),
-            new OrientationPackage()
+            new OrientationPackage(this),
+            new ReactVideoPackage()
         );
     }
 }

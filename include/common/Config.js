@@ -1,8 +1,11 @@
 var q = 'dota';
+var jxdta = encodeURIComponent("{q:'"+q+"',cp:%s,limitdate:0}");
+var userVideoData = encodeURIComponent("{q:'"+q+"',cp:%s,limitdate:0}");
+var usersData = encodeURIComponent("{q:'"+q+"',cp:%s}");
 var Config = {
 
-    jx:"http://wx.wefi.com.cn/wxbVideos/?r=TVPlaylist/GetSokuList&data={q:'"+q+"',cp:%s,limitdate:0}",
-    userVideo:"http://wx.wefi.com.cn/wxbVideos/?r=TVPlaylist/GetYokuUserPlayList&data={q:'"+q+"',uid:'%s',cp:%s,od:%s,}",
-    users:"http://wx.wefi.com.cn/wxbVideos/?r=TVPlaylist/GetSokuUser&data={q:'"+q+"',cp:%s}"
+    jx:"http://wx.wefi.com.cn/wxbVideos/?r=TVPlaylist/GetSokuList&data="+jxdta,
+    userVideo:"http://wx.wefi.com.cn/wxbVideos/?r=TVPlaylist/GetYokuUserPlayList&data="+userVideoData,
+    users:"http://wx.wefi.com.cn/wxbVideos/?r=TVPlaylist/GetSokuUser&data="+usersData
 }
 module.exports = Config;

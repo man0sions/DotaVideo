@@ -62,7 +62,7 @@ function Main(){
             .then((res)=> res.json())
 
             .then((res)=> {
-
+                //console.log(res);
                 var end = false;
                 var data = component.state.data.concat(res.data);
                 if (res.data.length == 0)
@@ -82,6 +82,7 @@ function Main(){
                 });
 
             }).catch((e)=>{
+                //console.log(e);
                 component.setState({
                     loadErr:true,
                     loading: false,
