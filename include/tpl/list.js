@@ -32,7 +32,7 @@ module.exports = React.createClass({
                 <Footer navigator={this.props.navigator} active={active}/>
 
             </View>
-            //
+
 
 
         );

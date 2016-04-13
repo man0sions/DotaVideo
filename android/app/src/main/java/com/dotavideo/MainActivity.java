@@ -2,6 +2,7 @@ package com.dotavideo;
 
 import com.facebook.react.ReactActivity;
 import com.brentvatne.RCTVideo.ReactVideoPackage;
+import com.oblador.vectoricons.VectorIconsPackage;
 import com.github.yamill.orientation.OrientationPackage;
 import com.smixx.reactnativeicons.ReactNativeIcons;
 import com.facebook.react.ReactPackage;
@@ -39,6 +40,7 @@ public class MainActivity extends ReactActivity {
         return Arrays.<ReactPackage>asList(
             new MainReactPackage(),
             new ReactVideoPackage(),
+            new VectorIconsPackage(),
             new OrientationPackage(),
             new ReactNativeIcons()
         );

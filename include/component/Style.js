@@ -1,6 +1,6 @@
 var React = require('react-native');
 
-import {styles,colors,fontSize,userPicDef,Icons,size} from '../common/Css';
+import {styles,colors,fontSize,userPicDef,Icon,size} from '../common/Css';
 import {Htag,Hlabel,Halert,BackButton,PlayBtn} from '../common/Tag';
 import {Header,Loading} from '../common/Layout';
 import Config from '../common/Config';
@@ -8,7 +8,6 @@ import Main from '../common/Main';
 
 const { BlurView, VibrancyView } = require('react-native-blur');
 var { width, height } = size;
-var { Icon,Spinner } = Icons;
 
 
 
@@ -108,17 +107,17 @@ var HotList = React.createClass({
                             <Text style={[styles.Hname]}>{row.name}</Text>
                             <View style={[styles.fRow,styles.Hfooter]}>
                                 <View style={[styles.HiconBox,styles.fRow]}>
-                                    <Icon name='ion|ios-paperplane-outline' size={15} color='#00ff96'
+                                    <Icon name='ios-paperplane-outline' size={15} color='#00ff96'
                                           style={[styles.Hicon]}/>
                                     <Text style={[styles.Htitle]}>{row.time}</Text>
                                 </View>
                                 <View style={[styles.HiconBox,styles.fRow,styles.borderMR]}>
-                                    <Icon name='ion|ios-clock-outline' size={14} color='#00ff96'
+                                    <Icon name='ios-clock-outline' size={14} color='#00ff96'
                                           style={[styles.Hicon]}/>
                                     <Text style={[styles.Htitle]}>{row.duration}</Text>
                                 </View>
                                 <View style={[styles.HiconBox,styles.fRow]}>
-                                    <Icon name='ion|ios-heart-outline' size={14} color='#00ff96'
+                                    <Icon name='ios-heart-outline' size={14} color='#00ff96'
                                           style={[styles.Hicon]}/>
                                     <Text style={[styles.Htitle]}>{row.click_count}</Text>
                                 </View>

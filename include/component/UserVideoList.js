@@ -1,6 +1,6 @@
 var React = require('react-native');
 
-import {styles,colors,fontSize,userPicDef,Icons,size} from '../common/Css';
+import {styles,colors,fontSize,userPicDef,Icon,size} from '../common/Css';
 import {Htag,Hlabel,Halert,BackButton,PlayBtn} from '../common/Tag';
 import {Header,Loading} from '../common/Layout';
 import Config from '../common/Config';
@@ -9,7 +9,6 @@ import Parallax from './Parallax';
 
 const { BlurView, VibrancyView } = require('react-native-blur');
 var { width, height } = size;
-var { Icon,Spinner } = Icons;
 
 
 var {
@@ -147,13 +146,13 @@ var UserVideoList = React.createClass({
                 <View style={[styles.Marginauto,styles.spaceBetween,styles.fRow]}>
                     <View style={[styles.UVLeft]}>
                         <Image style={[styles.UVImg,styles.jcenter,styles.aCenter]} source={{uri:item.pic}}>
-                            <Icon name='ion|ios-play-outline' size={20} color='#fff'
+                            <Icon name='ios-play-outline' size={20} color='#fff'
                                   style={[styles.iconPlay]}/>
                         </Image>
                     </View>
                     <View style={[styles.UVCenter,styles.fColumn]}>
                         <View style={[styles.fRow,styles.UVB]}>
-                            <Icon name='ion|ios-videocam' size={12} color='#fff'
+                            <Icon name='ios-videocam' size={12} color='#fff'
                                   style={[styles.iconVideocam]}/>
                         </View>
                         <Text style={[styles.UVClick]}>{item.click_count}</Text>
