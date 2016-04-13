@@ -1,6 +1,6 @@
 # 一个基于react native 的dota视频app
 
-mac:
+mac下:
 
 ### Install
 
@@ -12,8 +12,18 @@ react-native run-ios
 
 ```
 
-**windows 下目前无法运行。**
+windows下：
 
+```
+npm install
+
+react-native run-android
+
+```
+> 注：目前android bug较多（各种依赖不支持），建议在mac下通过ios虚拟机或者iphone真机调试。
+
+
+_在此感谢我的老婆[YiHang](http://git.oschina.net/tingX)对项目的支持，此项目ui布局从设计到实现都由她完成。_
 
 #### 目标：
 
