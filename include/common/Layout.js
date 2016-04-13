@@ -29,16 +29,14 @@ const Header = React.createClass({
         var title = this.props.title || this.state.title;
         return (
             <View style={[styles.header,styles.bgColor]}>
-                <View style={[styles.items3]}>
-                    <Icon name='android-menu' size={20} color='#000'
-                          style={[styles.commonMleft,styles.headicon]}/>
+                <View style={[styles.items3,styles.itemLeft,styles.paddingHorizontalA]}>
+                    <Icon name='android-menu' size={23} color='#000'/>
                 </View>
                 <View style={[styles.items3,styles.itemCenter]}>
                     <Text style={[styles.headtitle]}>{title}</Text>
                 </View>
-                <View style={[styles.items3,styles.itemRight]}>
-                    <Icon name='ios-eye-outline' size={30} color='#000'
-                          style={[styles.commonMright,styles.headicon]}/>
+                <View style={[styles.items3,styles.itemRight,styles.paddingHorizontalA]}>
+                    <Icon name='ios-eye-outline' size={30} color='#000'/>
                 </View>
             </View>
         );

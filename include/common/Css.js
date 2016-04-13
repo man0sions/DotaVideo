@@ -116,8 +116,6 @@ var styles = StyleSheet.create({
 
     },
     headicon: {
-        width:30,
-        height:30
 
     },
     headtitle: {
@@ -188,9 +186,7 @@ var styles = StyleSheet.create({
         justifyContent: 'center',
     },
     fRow: {
-        flexDirection: 'row',
-        //borderWidth:1,
-        //borderColor: 'red'
+        flexDirection: 'row'
     },
     fColumn: {
         flexDirection: 'column'
@@ -225,6 +221,12 @@ var styles = StyleSheet.create({
     borderBottom: {
         borderColor: 'rgba(0,0,0,0.9)',
         borderBottomWidth: 0.1
+    },
+
+    paddingHorizontalA: {
+        paddingHorizontal: 10,
+        //borderWidth: 1,
+        //borderColor: 'blue'
     },
 
     /**
@@ -283,13 +285,12 @@ var styles = StyleSheet.create({
     },
     Ntime: {
         fontSize:10,
-        color: '#444'
+        color: '#444',
+        position: 'relative'
     },
     iconeye: {
-        width:12,
-        height:11,
-        marginTop:8,
-        marginRight:2
+        position: 'relative',
+        marginRight: 2
     },
     ItemImg: {
         width: width-20,
@@ -302,10 +303,14 @@ var styles = StyleSheet.create({
         width: 30,
         height: 30,
         backgroundColor: 'rgba(0,0,0,0.5)',
-        borderRadius: 15,
-        fontWeight: 'bold'
+        borderRadius: 15
     },
-
+    NiconBox: {
+        position: 'absolute',
+        height: 14,
+        bottom: 0,
+        right: 0
+    },
 
 
 
@@ -453,7 +458,7 @@ var styles = StyleSheet.create({
 
     HiconBox: {
         width: width/3,
-        justifyContent: 'center',
+        justifyContent: 'center'
     },
 
     Hicon: {
@@ -481,6 +486,11 @@ var styles = StyleSheet.create({
         position: 'absolute',
         right: 15,
         top: 0
+    },
+
+    textGreen: {
+        fontSize: 10,
+        color: '#00ff96'
     },
 
 
@@ -575,6 +585,18 @@ var styles = StyleSheet.create({
         marginLeft: 20
     },
 
+
+    UViconBox: {
+        width: width/2,
+        justifyContent: 'center'
+    },
+
+    UVborderMR: {
+        borderRightWidth: 1,
+        borderColor: 'rgba(0,0,0,0.4)'
+    },
+
+
     seeBtn: {
         color: '#e54847',
         fontSize: 11,
@@ -586,11 +608,6 @@ var styles = StyleSheet.create({
         position: 'absolute',
         bottom: 0,
         right: 0
-    },
-
-    iconVideocam: {
-        width: 12,
-        height: 12
     },
 
 });

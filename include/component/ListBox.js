@@ -57,7 +57,7 @@ const ListItem = React.createClass({
                                     </View>
                                     <View style={[styles.fColumn,styles.tRight,styles.heightS]}>
                                         <Text style={[styles.Ndate]}>{item.time}</Text>
-                                        <View style={[styles.fRow,styles.fend]}>
+                                        <View style={[styles.fRow,styles.NiconBox]}>
                                             <Icon name='ios-heart-outline' size={13} color='#ff0056'
                                                   style={[styles.iconeye]}/>
                                             <Text style={[styles.Nclick]}>{item.click_count}</Text>
@@ -69,9 +69,10 @@ const ListItem = React.createClass({
                                 </View>
                             </View>
                         </View>
-                        <Image style={[styles.ItemImg,styles.jcenter,styles.aCenter]} source={{uri:item.pic}}>
-                            <Icon name='ios-play-outline' size={20} color='#fff'
-                                  style={[styles.iconPlay]}/>
+                        <Image style={[styles.ItemImg,styles.itemCenter]} source={{uri:item.pic}}>
+                            <View style={[styles.iconPlay,styles.itemCenter]}>
+                                <Icon name='ios-play-outline' size={22} color='#fff'/>
+                            </View>
                         </Image>
                         <Text style={[styles.nameInfo]}>{item.name}</Text>
 

@@ -146,14 +146,14 @@ var UserVideoList = React.createClass({
                 <View style={[styles.Marginauto,styles.spaceBetween,styles.fRow]}>
                     <View style={[styles.UVLeft]}>
                         <Image style={[styles.UVImg,styles.jcenter,styles.aCenter]} source={{uri:item.pic}}>
-                            <Icon name='ios-play-outline' size={20} color='#fff'
-                                  style={[styles.iconPlay]}/>
+                            <View style={[styles.iconPlay,styles.itemCenter]}>
+                                <Icon name='ios-play-outline' size={22} color='#fff'/>
+                            </View>
                         </Image>
                     </View>
                     <View style={[styles.UVCenter,styles.fColumn]}>
                         <View style={[styles.fRow,styles.UVB]}>
-                            <Icon name='ios-videocam' size={12} color='#fff'
-                                  style={[styles.iconVideocam]}/>
+                            <Icon name='ios-videocam' size={14} color='#fff'/>
                         </View>
                         <Text style={[styles.UVClick]}>{item.click_count}</Text>
                         <Text style={[styles.UVName]}>{item.name}</Text>
@@ -190,13 +190,14 @@ var UserVideoList = React.createClass({
                             <Text style={[styles.Hauthor]}>{row.uname}</Text>
                             <Text style={[styles.Hname]}>{row.intr}</Text>
                             <View style={[styles.fRow,styles.Hfooter]}>
-                                <View style={[styles.HiconBox,styles.fRow]}>
-
-                                    <Text style={[styles.Htitle]}>粉丝 : {row.fans}</Text>
+                                <View style={[styles.UViconBox,styles.fRow,styles.UVborderMR]}>
+                                    <Text style={[styles.textGreen]}>粉丝:</Text>
+                                    <Text style={[styles.Htitle]}> {row.fans}</Text>
                                 </View>
 
-                                <View style={[styles.HiconBox,styles.fRow]}>
-                                    <Text style={[styles.Htitle]}>播放 : {row.click_count}</Text>
+                                <View style={[styles.UViconBox,styles.fRow]}>
+                                    <Text style={[styles.textGreen]}>粉丝:</Text>
+                                    <Text style={[styles.Htitle]}>{row.click_count}</Text>
                                 </View>
                             </View>
                         </View>
