@@ -11,43 +11,56 @@ var {
     Image,
     Text,
     View,
-    Modal
+    Animated
     } = React;
 
-const HeadBox = React.createClass({
+const MModal = React.createClass({
     getInitialState:function(){
         return{
-            box:null,
+            top : new Animated.Value(size.height)
+
         }
     },
-
-    _setShow:function() {
-        this.props.parent.setState({
-            showBox:!this.props.show
-        });
+    componentDidMount:function(){
 
     },
+    componentWillUpdate:function(){
+        if(this.props.show)
+        {
+            var top=size.height;
+        }
+        else
+        {
+            var top=0;
+        }
+        Animated.spring(
+            this.state.top,
+            {
+                toValue: top,
+                //duration: 300,
+            }
+        ).start();
+    },
+
 
     render:function(){
-         return (
-            <Modal
-                animated={true}
-                transparent={true}
-                visible={this.props.show}
-                onRequestClose={() => {this._setModalVisible(false)}}
-            >
-                <View style={{backgroundColor:'#fff',flex:1}}>
-                   <Text> 我的信息</Text>
-                   <Text> 我的信息</Text>
-                   <Text> 我的信息</Text>
-                   <Text> 我的信息</Text>
-                    <TouchableOpacity onPress={() => {this._setShow()}}>
-                        <BackButton size={25}/>
-                    </TouchableOpacity>
+        console.log(this.props.show);
 
-                </View>
-              </Modal>
+
+        return (
+
+            <Animated.View style={{backgroundColor:'#fff',position:'absolute',top:this.state.top,width:size.width,height:height}}>
+                <Text> 我的信息</Text>
+                <Text> 我的信息</Text>
+                <Text> 我的信息</Text>
+                <Text> 我的信息</Text>
+                <TouchableOpacity onPress={() => {this._setShow()}}>
+                    <BackButton size={25}/>
+                </TouchableOpacity>
+
+            </Animated.View>
         );
+
     }
 });
 
@@ -61,27 +74,31 @@ const Header = React.createClass({
     getInitialState:function(){
         return{
             title:'每日精选',
-            showBox:false
         }
     },
-    showBox:function(){
-        this.setState({
-            showBox:!this.state.showBox
-        });
+
+    _renderMenu:function(){
+        var icon = 'android-menu';
+        if(this.props.parent.state.modalShow)
+            icon = 'chevron-down';
+        return (
+            <TouchableOpacity
+                style={[styles.items3,styles.itemLeft,styles.paddingHorizontalA]}
+                onPress={()=>{this.props.parent.setState({modalShow:!this.props.parent.state.modalShow})}}
+            >
+                <Icon name={icon} size={23} color='#000'/>
+            </TouchableOpacity>
+        );
+
     },
+
     render: function () {
         var title = this.props.title || this.state.title;
         return (
             <View>
-                <HeadBox parent={this} show={this.state.showBox}/>
                 <View style={[styles.header,styles.bgColor]}>
+                    {this._renderMenu()}
 
-                    <TouchableOpacity
-                    style={[styles.items3,styles.itemLeft,styles.paddingHorizontalA]}
-                    onPress={()=>{this.showBox()}}
-                >
-                    <Icon name='android-menu' size={23} color='#000'/>
-                </TouchableOpacity>
                 <View style={[styles.items3,styles.itemCenter]}>
                     <Text style={[styles.headtitle]}>{title}</Text>
                 </View>
@@ -259,7 +276,7 @@ const Style = {
     Footer: Footer,
     Loading: Loading,
     LoadErr:LoadErr,
-    HeadBox:HeadBox,
+    MModal:MModal,
     BackButton:BackButton
 
 }

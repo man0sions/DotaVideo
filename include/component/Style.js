@@ -9,8 +9,6 @@ import Main from '../common/Main';
 const { BlurView, VibrancyView } = require('react-native-blur');
 var { width, height } = size;
 
-
-
 var {
     TouchableOpacity,
     Image,
