@@ -7,8 +7,8 @@ import Main from '../common/Main';
 import {BackButton} from '../common/Tag';
 
 var {width,height} = size;
-//var Orientation = require('react-native-orientation');
-//Orientation.lockToPortrait(); //this will lock the view to Portrait
+var Orientation = require('react-native-orientation');
+Orientation.lockToPortrait(); //this will lock the view to Portrait
 import {
     LazyloadListView,
     LazyloadView

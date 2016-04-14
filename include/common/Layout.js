@@ -1,6 +1,8 @@
 var React = require('react-native');
 import {styles,colors,fontSize,Icon,size} from './Css';
 var {width,height} = size;
+import {BackButton} from '../common/Tag';
+
 
 import Main from './Main';
 
@@ -10,8 +12,45 @@ var {
     Image,
     Text,
     View,
+    Modal
     } = React;
 
+const HeadBox = React.createClass({
+    getInitialState:function(){
+        return{
+            box:null,
+        }
+    },
+
+    _setShow:function() {
+        this.props.parent.setState({
+            showBox:!this.props.show
+        });
+
+    },
+
+    render:function(){
+         return (
+            <Modal
+                animated={true}
+                transparent={true}
+                visible={this.props.show}
+                onRequestClose={() => {this._setModalVisible(false)}}
+            >
+                <View style={{backgroundColor:'#fff',flex:1}}>
+                   <Text> 我的信息</Text>
+                   <Text> 我的信息</Text>
+                   <Text> 我的信息</Text>
+                   <Text> 我的信息</Text>
+                    <TouchableOpacity onPress={() => {this._setShow()}}>
+                        <BackButton size={25}/>
+                    </TouchableOpacity>
+
+                </View>
+              </Modal>
+        );
+    }
+});
 
 /**
  * 全局header
@@ -22,22 +61,36 @@ var {
 const Header = React.createClass({
     getInitialState:function(){
         return{
-            title:'每日精选'
+            title:'每日精选',
+            showBox:false
         }
+    },
+    showBox:function(){
+        this.setState({
+            showBox:!this.state.showBox
+        });
     },
     render: function () {
         var title = this.props.title || this.state.title;
         return (
-            <View style={[styles.header,styles.bgColor]}>
-                <View style={[styles.items3,styles.itemLeft,styles.paddingHorizontalA]}>
+            <View>
+                <HeadBox parent={this} show={this.state.showBox}/>
+                <View style={[styles.header,styles.bgColor]}>
+
+                    <TouchableOpacity
+                    style={[styles.items3,styles.itemLeft,styles.paddingHorizontalA]}
+                    onPress={()=>{this.showBox()}}
+                >
                     <Icon name='android-menu' size={23} color='#000'/>
-                </View>
+                </TouchableOpacity>
                 <View style={[styles.items3,styles.itemCenter]}>
                     <Text style={[styles.headtitle]}>{title}</Text>
                 </View>
                 <View style={[styles.items3,styles.itemRight,styles.paddingHorizontalA]}>
                     <Icon name='ios-eye-outline' size={30} color='#000'/>
                 </View>
+            </View>
+
             </View>
         );
     }
@@ -90,6 +143,7 @@ const Footer = React.createClass({
     render: function () {
         return (
             <View style={[styles.footer,styles.bgColor]}>
+
                 {this._renderItem()}
             </View>
         );
@@ -166,7 +220,8 @@ const Style = {
     Layout: Layout,
     Footer: Footer,
     Loading: Loading,
-    LoadErr:LoadErr
+    LoadErr:LoadErr,
+    HeadBox:HeadBox
 
 }
 module.exports = Style;

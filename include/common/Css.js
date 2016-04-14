@@ -9,13 +9,14 @@ var Dimensions = require('Dimensions');
 var { width, height } = Dimensions.get('window');
 var pheight = height / 100;
 var pwidth = width / 100;
-var headHeight = height / 22;
-
 var androidHeightP = 0;
 if(Platform.OS=="android")
 {
     androidHeightP=2;
 }
+var headHeight = pheight * (8-androidHeightP);
+
+
 /***
  * 全局公共变量,函数
  * @type {{default: string, primary: string, success: string, info: string, warning: string, danger: string}}
@@ -110,7 +111,7 @@ var styles = StyleSheet.create({
      * */
 
     header: {
-        height: pheight * (8-androidHeightP),
+        height: headHeight,
         width: width,
         justifyContent: 'center',
         flexDirection: 'row',

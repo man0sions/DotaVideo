@@ -26,7 +26,6 @@ module.exports = React.createClass({
             <View style={styles.container}>
                 <Header title={this.props.title}/>
                 <View style={[styles.content]}>
-
                     <ListBox navigator={this.props.navigator} url={url} {...this.props}/>
 
                 </View>
