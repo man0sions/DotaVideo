@@ -1,19 +1,45 @@
 var React = require('react-native');
+import Main from '../common/Main';
+
 var Icon = require('react-native-vector-icons/Ionicons');
 var {
     StyleSheet,
     AsyncStorage,
-    Platform
+    Platform,
+    Image
     } = React;
 var Dimensions = require('Dimensions');
 var { width, height } = Dimensions.get('window');
 var pheight = height / 100;
 var pwidth = width / 100;
 var androidHeightP = 0;
-if(Platform.OS=="android")
+
+
+if(Platform.OS=="ios")
 {
+
+    var { BlurView, VibrancyView } = require('react-native-blur');
+
+}
+else
+{
+    var BlurView = React.createClass({
+        render:function(){
+            //var timestamp=new Date().getTime();
+            //console.log(timestamp%10);
+
+
+            var rand = Main.random(1,10);
+            var url = 'http://wx.wefi.com.cn/images/bulr/Blur_0'+rand+'.jpg';
+            //console.log(url);
+            return(
+                <Image  source={{uri:url}} style={[{backgroundColor: 'transparent',}]} {...this.props} />
+            );
+        }
+    });
     androidHeightP=2;
 }
+
 var headHeight = pheight * (8-androidHeightP);
 
 
@@ -636,7 +662,8 @@ module.exports = {
         height:height,
         headHeight:headHeight,
     },
-    Icon:Icon
+    Icon:Icon,
+    BlurView:BlurView
 
 }
 

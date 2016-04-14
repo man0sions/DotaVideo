@@ -58,6 +58,11 @@ function Main(){
         return res;
 
     }
+    /**
+     *
+     * @param url
+     * @returns {*|XML|void|string}
+     */
     this.queryFormat = function(url){
         var reg = new RegExp("(\\{.*?\\})");
         var u = url.replace(reg,function(q){
@@ -65,6 +70,18 @@ function Main(){
         });
 
         return u;
+    }
+    /**
+     *
+     * @param n1
+     * @param n2
+     * @returns {number}
+     */
+    this.random = function(n1,n2){
+        var rand = Math.round(Math.random() * (Math.max(n1,n2)-Math.min(n1,n2) + 1));
+        if(rand==0)
+           return Main.random(n1,n2);
+        return rand;
     }
     /**
      *
@@ -91,6 +108,7 @@ function Main(){
      * @param component
      */
     this.loadData= function (component,url) {
+        //console.log(url);
         url = Main.queryFormat(url);
         if (component.state.loading || component.state.end)
             return;

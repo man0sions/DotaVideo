@@ -19,14 +19,16 @@ module.exports = React.createClass({
 
     getInitialState: function() {
 
-        return {};
+        return {
+            modalShow:false
+        }
     },
 
 
     render: function() {
         return (
             <View style={styles.container}>
-                <Header title={this.props.title} />
+                <Header title={this.props.title} parent={this}/>
 
                 <View style={[styles.content]}>
                     <ListUsers navigator={this.props.navigator} />

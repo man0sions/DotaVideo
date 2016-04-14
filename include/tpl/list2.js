@@ -7,8 +7,12 @@
 var React = require('react-native');
 import {Header,Footer,Layout} from '../common/Layout';
 import {styles} from '../common/Css';
+import ListBox from '../component/ListBox';
 
-import {HotList} from '../component/Style';
+import Config from '../common/Config';
+import Main from '../common/Main';
+
+
 var {
     View
     } = React;
@@ -16,13 +20,21 @@ var {
 
 
 module.exports = React.createClass({
+    getInitialState:function(){
+        return {
+            modalShow:false
+        }
+    },
     render: function() {
+        var url = Main.sprintf(Config.jx, '%s',30); //获取本月排行
+
+
         return (
             <View style={styles.container}>
-                <Header title={this.props.title} />
+                <Header title={this.props.title} parent={this}/>
 
                 <View style={[styles.content]}>
-                    <HotList navigator={this.props.navigator} url={this.props.url}/>
+                    <ListBox navigator={this.props.navigator} url={url}/>
                 </View>
                 <Footer navigator={this.props.navigator} active="list2"/>
 

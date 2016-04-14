@@ -1,11 +1,10 @@
 var React = require('react-native');
 
-import {styles,colors,fontSize,userPicDef,Icon,size} from '../common/Css';
+import {styles,colors,fontSize,userPicDef,Icon,size,BlurView} from '../common/Css';
 import {Header,Loading,BackButton} from '../common/Layout';
 import Config from '../common/Config';
 import Main from '../common/Main';
 
-const { BlurView, VibrancyView } = require('react-native-blur');
 var { width, height } = size;
 
 
@@ -15,9 +14,9 @@ var {
     Text,
     View,
     ListView,
-    Animated
+    Animated,
+    Platform
     } = React;
-
 
 /**
  * 单个用户视频列表
@@ -45,10 +44,10 @@ var UserVideoList = React.createClass({
     onScroll: function (event) {
         var top1 = -height/3;
         var offset = event.nativeEvent.contentOffset.y ;
-
-        if((offset>-30 && offset<-20) || (this.state.marginTopAnim._value==0 && offset>0))
+        //console.log(offset);
+        if((offset>-30 && offset<=0) || (this.state.marginTopAnim._value==0 && offset>0))
         {
-            //console.log(offset,this.state.marginTopAnim._value);
+            console.log(offset,this.state.marginTopAnim._value);
             var time = 500;
             if(offset>0)
             {
@@ -59,11 +58,11 @@ var UserVideoList = React.createClass({
                 var top = 0;
 
             }
-            Animated.timing(
+            Animated.spring(
                 this.state.marginTopAnim,
                 {
                     toValue: top,
-                    duration: time,
+                    //duration: time,
                 }
             ).start();
 

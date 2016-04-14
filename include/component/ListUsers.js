@@ -1,11 +1,9 @@
 var React = require('react-native');
 
-import {styles,userPicDef} from '../common/Css';
+import {styles,userPicDef,BlurView} from '../common/Css';
 import {Loading,LoadErr} from '../common/Layout';
 import Config from '../common/Config';
 import Main from '../common/Main';
-import  { BlurView, VibrancyView } from 'react-native-blur';
-
 
 var {
     TouchableOpacity,
@@ -13,8 +11,10 @@ var {
     Text,
     View,
     ScrollView,
-    ListView
+    ListView,
+    Platform
     } = React;
+
 
 
 import {
@@ -86,7 +86,7 @@ var ListUsers = React.createClass({
         return (
             <LazyloadView host="ListUsers">
             <TouchableOpacity style={[styles.InfoItem,styles.InfoHalf]} onPress={()=>{this._goRouter(row)}}>
-                <Image style={[styles.InfoImage,styles.InfoHalf]} source={{uri:row.upic}}>
+                <Image style={[styles.InfoHalf]} source={{uri:row.upic}}>
                     <BlurView blurType="light" style={styles.blur}>
                         <View style={[styles.Infoopact,styles.InfoHalf,styles.itemCenter]}>
                             <Image style={[styles.InfoAvter]} source={{uri:row.upic}}/>

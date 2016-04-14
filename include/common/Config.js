@@ -1,6 +1,6 @@
 var q = 'dota';
-var jxdta = ("{q:'"+q+"',cp:%s,limitdate:0}");
-var userVideoData = ("{q:'"+q+"',cp:%s,limitdate:0}");
+var jxdta = ("{q:'"+q+"',cp:%s,limitdate:%s}");
+var userVideoData = ("{q:'"+q+"',uid:'%s',cp:%s,limitdate:0}");
 var usersData = ("{q:'"+q+"',cp:%s}");
 var Config = {
 
