@@ -1,10 +1,9 @@
 var React = require('react-native');
 
 import {styles,userPicDef,Icon,size} from '../common/Css';
-import {Loading,LoadErr} from '../common/Layout';
+import {Loading,LoadErr,BackButton} from '../common/Layout';
 import Config from '../common/Config';
 import Main from '../common/Main';
-import {BackButton} from '../common/Tag';
 
 var {width,height} = size;
 var Orientation = require('react-native-orientation');

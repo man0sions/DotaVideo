@@ -1,8 +1,7 @@
 var React = require('react-native');
 
 import {styles,colors,fontSize,userPicDef,Icon,size} from '../common/Css';
-import {Htag,Hlabel,Halert,BackButton,PlayBtn} from '../common/Tag';
-import {Header,Loading} from '../common/Layout';
+import {Header,Loading,BackButton} from '../common/Layout';
 import Config from '../common/Config';
 import Main from '../common/Main';
 

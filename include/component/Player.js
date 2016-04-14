@@ -13,7 +13,7 @@ import Video from 'react-native-video';
 var Dimensions = require('Dimensions');
 var { width, height } = Dimensions.get('window');
 var Orientation = require('react-native-orientation');
-import {BackButton} from '../common/Tag';
+import {BackButton} from '../common/Layout';
 
 module.exports = class VideoPlayer extends Component {
     constructor(props) {

@@ -121,44 +121,6 @@ const Halert = React.createClass({
 
 
 
-/**
- * 返回按钮
- * 用法  : <BackButton size={40}/>
- * @param  size - 返回按钮的大小
- */
-const BackButton = React.createClass({
-    getClass: function (size) {
-        var backButton = {
-            width: size,
-            height: size,
-            backgroundColor: '#000',
-            opacity: 0.5,
-            borderRadius: 20,
-            //top: height - size - 100,
-            //left: 10,
-            //position: 'absolute'
-        }
-        return backButton;
-    },
-
-    render: function () {
-        var size = this.props.size || width / 9;
-        var className = this.getClass(size);
-
-        return (
-            <View style={[className,this.props.style]}>
-                <Icon
-                    name='ios-arrow-left'
-                    size={size}
-                    color='#fff'
-                    style={{width:size,height:size}}/>
-            </View>
-        );
-
-    }
-});
-
-
 
 /**
  * 返回按钮
@@ -187,7 +149,6 @@ const Style = {
     Htag: Htag,
     Hlabel: Hlabel,
     Halert: Halert,
-    BackButton, BackButton,
     PlayBtn: PlayBtn,
 }
 module.exports = Style;
