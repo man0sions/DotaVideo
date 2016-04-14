@@ -28,6 +28,46 @@ function Main(){
     }
     /**
      *
+     * @param url
+     * @returns {{protocol: *, host: *, hostname: *, port: (*|number), pathname: *, query: {}, search: (*|string), hash: *}}
+     */
+    this.urlParse= function(url) {
+        var match = url.match(/^(https?\:)\/\/(([^:\/?#]*)(?:\:([0-9]+))?)(\/[^?#]*)(\?[^#]*|)(#.*|)$/);
+        var query = {};
+        if(match && match[6])
+        {
+            var q = match[6].replace("?","").split("&");
+
+            for(var i=0;i< q.length;i++)
+            {
+                var [k,v] = q[i].split("=");
+                query[k] = v;
+            }
+
+        }
+        var res =   {
+                protocol: match[1],
+                host: match[2],
+                hostname: match[3],
+                port: match[4] || 80,
+                pathname: match[5],
+                query: query,
+                search: match[6]||'',
+                hash: match[7]
+            }
+        return res;
+
+    }
+    this.queryFormat = function(url){
+        var reg = new RegExp("(\\{.*?\\})");
+        var u = url.replace(reg,function(q){
+            return encodeURIComponent(q);
+        });
+
+        return u;
+    }
+    /**
+     *
      * @param ListView
      * @returns {{data: Array, loading: boolean, dataSource: *, page: number, end: boolean}}
      */
@@ -51,7 +91,7 @@ function Main(){
      * @param component
      */
     this.loadData= function (component,url) {
-
+        url = Main.queryFormat(url);
         if (component.state.loading || component.state.end)
             return;
         component.setState({

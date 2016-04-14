@@ -1,7 +1,7 @@
 var q = 'dota';
-var jxdta = encodeURIComponent("{q:'"+q+"',cp:%s,limitdate:0}");
-var userVideoData = encodeURIComponent("{q:'"+q+"',cp:%s,limitdate:0}");
-var usersData = encodeURIComponent("{q:'"+q+"',cp:%s}");
+var jxdta = ("{q:'"+q+"',cp:%s,limitdate:0}");
+var userVideoData = ("{q:'"+q+"',cp:%s,limitdate:0}");
+var usersData = ("{q:'"+q+"',cp:%s}");
 var Config = {
 
     jx:"http://wx.wefi.com.cn/wxbVideos/?r=TVPlaylist/GetSokuList&data="+jxdta,
