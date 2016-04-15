@@ -25,10 +25,12 @@ var {
  */
 
 var UserVideoList = React.createClass({
+    _timeout:null,
     getInitialState: function () {
 
         var data = Main.initialListData(ListView);
         data.marginTopAnim = new Animated.Value(0);
+        data.animating = false;
 
         return data;
 
@@ -42,12 +44,17 @@ var UserVideoList = React.createClass({
 
 
     onScroll: function (event) {
+        if(this.state.animating)
+            return;
         var top1 = -height/3;
         var offset = event.nativeEvent.contentOffset.y ;
         //console.log(offset);
         if((offset>-30 && offset<=0) || (this.state.marginTopAnim._value==0 && offset>0))
         {
-            console.log(offset,this.state.marginTopAnim._value);
+            this.setState({
+                animating:true
+            });
+            //console.log(offset,this.state.marginTopAnim._value);
             var time = 500;
             if(offset>0)
             {
@@ -64,7 +71,11 @@ var UserVideoList = React.createClass({
                     toValue: top,
                     //duration: time,
                 }
-            ).start();
+            ).start(function(end){
+                this.setState({
+                    animating:false
+                });
+            }.bind(this));
 
 
         }
@@ -86,6 +97,9 @@ var UserVideoList = React.createClass({
                           onScroll={this.onScroll}
                           scrollEventThrottle={16}
                 />
+                <TouchableOpacity onPress={() => {this.props.navigator.jumpBack()}} style={{position:"absolute",bottom:10}}>
+                    <BackButton size={25}/>
+                </TouchableOpacity>
                 {this.state.loading ? <Loading size={20} text={'数据加载中'}/> : null}
 
             </View>
@@ -104,7 +118,7 @@ var UserVideoList = React.createClass({
                 key={item.id}
                 style={[styles.mainContainer,styles.borderBottom]}
                 {...this.props}
-                onPress={()=>{Main.goRouter(this,'video',item)}}
+                onPress={()=>{Main.goRouter(this,'Video',item)}}
 
 
             >

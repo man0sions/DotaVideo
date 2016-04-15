@@ -1,11 +1,11 @@
 'use strict';
 
 var React = require('react-native');
-var List = require('./include/tpl/list');
-var List2 = require('./include/tpl/list2');
-var List3 = require('./include/tpl/list3');
-var Video = require('./include/tpl/video');
-var Users = require('./include/tpl/users');
+import Home from './app/tpl/home';
+import TopList from './app/tpl/topList';
+import Users from './app/tpl/users';
+import UserVideo from './app/tpl/userVideos';
+import Video from './app/tpl/video';
 
 var {
     Navigator,
@@ -18,44 +18,35 @@ var App = React.createClass({
     renderScene(router, navigator){
         var Component = null;this._navigator = navigator;
         switch(router.name){
-            case "list":
-                Component = List;
+            case "Home":
+                Component = Home;
                 break;
-            case "list2":
-                Component = List2;
+            case "TopList":
+                Component = TopList;
                 break;
-            case "list3":
-                Component = List3;
-                break;
-            case "users":
+            case "Users":
                 Component = Users;
                 break;
-
+            case "UserVideo":
+                Component = UserVideo;
                 break;
-            case "video":
+            case "Video":
                 Component = Video;
                 break;
 
             default: //default view
-                Component = List;
+                Component = Home;
         }
-        //console.log("==>renderScene",router,(new Date));
 
         return <Component navigator={navigator} {...router.passProps}/>
     },
-
-    componentDidMount() {
-        //var navigator = this._navigator;
-
-    },
-
 
 
 
     render() {
         return (
             <Navigator
-                initialRoute={{name: 'list'}}
+                initialRoute={{name: 'Home'}}
                 renderScene={this.renderScene}
                 configureScene={(route) => {
             if (route.sceneConfig) {

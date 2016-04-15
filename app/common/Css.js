@@ -17,7 +17,7 @@ var androidHeightP = 0;
 
 if(Platform.OS=="ios")
 {
-    var IosAndrio={height:10,fontSize:14,paddingTop:18};
+    var IosAndrio={height:2,fontSize:14,paddingTop:18};
     var IosAndrioT={fontSize:10,height:pheight*86}
 
     var { BlurView, VibrancyView } = require('react-native-blur');
@@ -27,9 +27,6 @@ else
 {
     var BlurView = React.createClass({
         render:function(){
-            //var timestamp=new Date().getTime();
-            //console.log(timestamp%10);
-
 
             var rand = Main.random(1,10);
             var url = 'http://wx.wefi.com.cn/images/bulr/Blur_0'+rand+'.jpg';
@@ -663,7 +660,8 @@ var styles = StyleSheet.create({
     modalShow: {
         backgroundColor:'#fff',
         position:'absolute',
-        height:height
+        height:height,
+        width:width
     },
 
     modalTop: {

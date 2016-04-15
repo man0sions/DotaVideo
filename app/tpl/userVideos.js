@@ -6,9 +6,9 @@
 
 var React = require('react-native');
 import {Header,Footer,Layout} from '../common/Layout';
-import ListUsers from '../component/ListUsers';
 import {styles} from '../common/Css';
 
+import UserVideoList from '../component/UserVideoList';
 var {
     View
     } = React;
@@ -16,26 +16,24 @@ var {
 
 
 module.exports = React.createClass({
-
-    getInitialState: function() {
-
+    getInitialState:function(){
         return {
-            modalShow:false
         }
     },
-
-
     render: function() {
         return (
             <View style={styles.container}>
-                <Header title={this.props.title} parent={this}/>
+                <Header title={this.props.title} />
 
                 <View style={[styles.content]}>
-                    <ListUsers navigator={this.props.navigator} />
+                    <UserVideoList  {...this.props} />
                 </View>
-                <Footer navigator={this.props.navigator} active="users"/>
+                <Footer navigator={this.props.navigator} active='users'/>
 
             </View>
         );
     },
 });
+
+
+

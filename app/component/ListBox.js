@@ -18,7 +18,8 @@ var {
     Text,
     View,
     ScrollView,
-    ListView
+    ListView,
+    RefreshControl
     } = React;
 
 /**
@@ -101,9 +102,8 @@ const ListBox = React.createClass({
     },
 
     _renderRow: function (row) {
-
         return (
-            <ListItem row={row} onPress={()=>{Main.goRouter(this,'video',row)}} {...this.props}/>
+            <ListItem row={row} onPress={()=>{Main.goRouter(this,'Video',row)}} {...this.props}/>
         );
     },
     _renderGoBack(){
@@ -117,6 +117,7 @@ const ListBox = React.createClass({
 
         );
     },
+
     _renderErrBtn(){
         var url = Main.sprintf(this.props.url, this.state.page);
         if(!this.state.loadErr)
@@ -133,6 +134,8 @@ const ListBox = React.createClass({
                    pageSize={1}
                    initialListSize={10}
 
+
+
                />
            );
 
@@ -148,6 +151,7 @@ const ListBox = React.createClass({
             <View style={{flex:1}}>
                 {this._renderErrBtn()}
                 {this._renderGoBack()}
+
                 {this.state.loading ? <Loading size={20} text={'数据加载中'}/> : null}
             </View>
         );

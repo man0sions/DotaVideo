@@ -1,3 +1,4 @@
+import Toast from 'react-native-root-toast';
 
 function Main(){
     /**
@@ -107,7 +108,7 @@ function Main(){
      * @param url
      * @param component
      */
-    this.loadData= function (component,url) {
+    this.loadData= function (component,url,reverse) {
         //console.log(url);
         url = Main.queryFormat(url);
         if (component.state.loading || component.state.end)
@@ -125,9 +126,9 @@ function Main(){
                 var data = component.state.data.concat(res.data);
                 if (res.data.length == 0)
                     end = true;
-
+                if(reverse)
+                    data.reverse();
                 var page = component.state.page + 1;
-                //console.log('b '+component.state.page+(new Date));
 
 
                 component.setState({
@@ -161,6 +162,33 @@ function Main(){
         component.props.navigator.push({
             name: router,
             passProps: params
+        });
+    }
+    /**
+     *
+     * @param msg
+     */
+    this.toast = function(msg){
+
+        Toast.show(msg, {
+            duration: Toast.durations.LONG,
+            position: Toast.positions.BOTTOM,
+            shadow: true,
+            animation: true,
+            hideOnPress: true,
+            delay: 0,
+            onShow: () => {
+                // calls on toast\`s appear animation start
+            },
+            onShown: () => {
+                // calls on toast\`s appear animation end.
+            },
+            onHide: () => {
+                // calls on toast\`s hide animation start.
+            },
+            onHidden: () => {
+                // calls on toast\`s hide animation end.
+            }
         });
     }
 

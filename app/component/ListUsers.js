@@ -78,7 +78,7 @@ var ListUsers = React.createClass({
     _goRouter: function (row) {
         row.url = Main.sprintf(Config.userVideo, row.uid, 1, '%s');
         row.title = row.uname;
-        Main.goRouter(this,'list3',row);
+        Main.goRouter(this,'UserVideo',row);
 
     },
 

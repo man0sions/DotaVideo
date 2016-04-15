@@ -6,11 +6,12 @@
 
 var React = require('react-native');
 import {Header,Footer,Layout} from '../common/Layout';
+import ListBox from '../component/ListBox';
 import {styles} from '../common/Css';
-
-import UserVideoList from '../component/UserVideoList';
+import Config from '../common/Config';
 var {
-    View
+    View,
+
     } = React;
 
 
@@ -18,21 +19,28 @@ var {
 module.exports = React.createClass({
     getInitialState:function(){
         return {
-            modalShow:false
         }
     },
     render: function() {
+        var url = this.props.url? this.props.url: Config.jx;
+        var active = this.props.title ? 'users' : 'list';
         return (
             <View style={styles.container}>
-                <Header title={this.props.title} parent={this}/>
+                <Header title={this.props.title} />
 
                 <View style={[styles.content]}>
-                    <UserVideoList  {...this.props} />
-                </View>
-                <Footer navigator={this.props.navigator} active='users'/>
+                        <ListBox navigator={this.props.navigator} url={url} {...this.props}/>
+
 
             </View>
+                <Footer navigator={this.props.navigator} active={active}/>
+
+            </View>
+
+
+
         );
+
     },
 });
 

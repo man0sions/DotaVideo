@@ -2,8 +2,10 @@ var React = require('react-native');
 import {styles,colors,fontSize,Icon,size} from './Css';
 var {width,height} = size;
 
-
+import MModal  from './MModal';
+import RootSiblings  from './RootSiblings';
 import Main from './Main';
+import Config from '../common/Config';
 
 
 var {
@@ -11,46 +13,26 @@ var {
     Image,
     Text,
     View,
-    Animated
+    Component
     } = React;
 
-const MModal = React.createClass({
-    getInitialState: function () {
-        return {
-            top: new Animated.Value(height)
 
-        }
-    },
-    componentDidMount: function () {
+/**
+ * UserCenter
+ */
+class UserCenter extends Component{
 
-    },
-    componentWillUpdate: function () {
-        if (this.props.show) {
-            var top = size.height;
-        }
-        else {
-            var top = 0;
-        }
-        Animated.spring(
-            this.state.top,
-            {
-                toValue: top,
-                //duration: 300,
-            }
-        ).start();
-    },
-
-
-    render: function () {
-        //console.log(this.props.show);
-
-
-        return (
-
-            <Animated.View style={[styles.modalShow,{top:this.state.top,width:size.width}]}>
+    constructor() {
+        super(...arguments);
+    }
+    render (){
+        return(
+            <View>
                 <View style={[styles.modalTop,styles.itemCenter]}>
                     <Image style={[styles.modalImage]} source={{uri:'http://wx.wefi.com.cn/images/bulr/Blur_01.jpg'}}></Image>
-                    <Text style={[styles.modalText,styles.paddingVertical]}>点击登陆发表评论</Text>
+                    <TouchableOpacity onPress={()=>{Main.toast('开发中...')}}>
+                        <Text style={[styles.modalText,styles.paddingVertical]}>点击登陆发表评论</Text>
+                    </TouchableOpacity>
                 </View>
                 <View style={[styles.modalCenter,styles.borderBottom,styles.fRow]}>
                     <View style={[styles.UViconBox,styles.fRow,styles.UVborderMR]}>
@@ -68,12 +50,10 @@ const MModal = React.createClass({
                     <View style={[styles.heightQ]}><Text style={[styles.modalTextDown]}>意见反馈</Text></View>
                     <View style={[styles.heightQ]}><Text style={[styles.modalTextDown]}>我要投稿</Text></View>
                 </View>
-
-            </Animated.View>
+            </View>
         );
-
     }
-});
+}
 
 /**
  * 全局header
@@ -85,21 +65,39 @@ const Header = React.createClass({
     getInitialState: function () {
         return {
             title: '每日精选',
+            modalShow:false,
         }
     },
+    _showModal:function(){
+        var show = !this.state.modalShow;
+        this.setState({
+            modalShow:show,
+        });
+        var modal = (<MModal visible={show} >
+            <UserCenter></UserCenter>
+        </MModal>);
 
+        if(show)
+            RootSiblings.show(modal);
+
+        else
+            RootSiblings.hide(modal);
+
+
+    },
     _renderMenu: function () {
         var icon = 'android-menu';
-        if (this.props.parent.state.modalShow)
+        if (this.state.modalShow)
             icon = 'chevron-down';
         return (
             <TouchableOpacity
                 style={[styles.items3,styles.itemLeft,styles.paddingHorizontalA]}
-                onPress={()=>{this.props.parent.setState({modalShow:!this.props.parent.state.modalShow})}}
+                onPress={()=>{this._showModal()}}
             >
                 <Icon name={icon} size={23} color='#000'/>
             </TouchableOpacity>
         );
+
     },
 
     render: function () {
@@ -145,12 +143,10 @@ const Footer = React.createClass({
 
     },
     _renderItem(){
-        var nav = [
-            {label: 'list', text: '每日精选'},
-            {label: 'users', text: '发现更多'},
-            {label: 'list2', text: '热门排行'},
-        ];
-        return nav.map(function (item, key) {
+
+        return Config.routers.map(function (item, key) {
+
+
             var center = key == 1 ? styles.footerItemsCenter : {};
             var params = {title: item.text};
             return (
@@ -270,12 +266,13 @@ const BackButton = React.createClass({
                     name='ios-arrow-left'
                     size={size}
                     color='#fff'
-                    style={{width:size,height:size}}/>
+                    style={{width:size,height:size,left:5,backgroundColor:'transparent'}}/>
             </View>
         );
 
     }
 });
+
 
 
 const Style = {
@@ -284,7 +281,6 @@ const Style = {
     Footer: Footer,
     Loading: Loading,
     LoadErr: LoadErr,
-    MModal: MModal,
     BackButton: BackButton
 
 }

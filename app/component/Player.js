@@ -35,7 +35,7 @@ module.exports = class VideoPlayer extends Component {
 
     onLoad(data) {
         this.setState({duration: data.duration});
-        console.log("==>onLoad",data,(new Date));
+        //console.log("==>onLoad",data,(new Date));
     }
 
     onProgress(data) {
@@ -45,7 +45,7 @@ module.exports = class VideoPlayer extends Component {
 
     }
     onLoadStart(data){
-        console.log("==>onLoadStart",data);
+        //console.log("==>onLoadStart",data);
 
 
     }
@@ -162,6 +162,8 @@ module.exports = class VideoPlayer extends Component {
 
     }
     componentDidMount(){
+        //console.log(this.props);
+
         //console.log(this.props.navigator.getCurrentRoutes());
 
         //setTimeout(function(){
@@ -190,8 +192,8 @@ module.exports = class VideoPlayer extends Component {
     }
 
     goRouter(params) {
-        //console.log(this.props.navigator.getCurrentRoutes());
         this.setScreen(1);
+
         this.props.navigator.jumpBack();
         this.setState({
             paused:true,
