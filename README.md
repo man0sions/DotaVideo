@@ -1,5 +1,9 @@
 # 一个基于react native 的dota视频app
 
+
+### [android apk下载](https://www.pgyer.com/DotaVideo)
+
+
 ### Install
 首先请根据自己的电脑配置环境，参考：http://facebook.github.io/react-native/releases/0.23/docs/getting-started.html#content
 
