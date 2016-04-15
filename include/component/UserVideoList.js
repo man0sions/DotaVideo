@@ -129,7 +129,7 @@ var UserVideoList = React.createClass({
                             <Text style={[styles.UVtime]}>{item.duration}</Text>
                             <Text style={[styles.UVminute]}>秒</Text>
                         </View>
-                        <Text style={[styles.seeBtn]}>观看</Text>
+                        <View style={[styles.seeBtn]}><Text style={[styles.seeText]}>观看</Text></View>
                     </View>
                 </View>
             </TouchableOpacity>

@@ -15,23 +15,21 @@ var {
     } = React;
 
 const MModal = React.createClass({
-    getInitialState:function(){
-        return{
-            top : new Animated.Value(size.height)
+    getInitialState: function () {
+        return {
+            top: new Animated.Value(height)
 
         }
     },
-    componentDidMount:function(){
+    componentDidMount: function () {
 
     },
-    componentWillUpdate:function(){
-        if(this.props.show)
-        {
-            var top=size.height;
+    componentWillUpdate: function () {
+        if (this.props.show) {
+            var top = size.height;
         }
-        else
-        {
-            var top=0;
+        else {
+            var top = 0;
         }
         Animated.spring(
             this.state.top,
@@ -43,20 +41,33 @@ const MModal = React.createClass({
     },
 
 
-    render:function(){
-        console.log(this.props.show);
+    render: function () {
+        //console.log(this.props.show);
 
 
         return (
 
-            <Animated.View style={{backgroundColor:'#fff',position:'absolute',top:this.state.top,width:size.width,height:height}}>
-                <Text> 我的信息</Text>
-                <Text> 我的信息</Text>
-                <Text> 我的信息</Text>
-                <Text> 我的信息</Text>
-                <TouchableOpacity onPress={() => {this._setShow()}}>
-                    <BackButton size={25}/>
-                </TouchableOpacity>
+            <Animated.View style={[styles.modalShow,{top:this.state.top,width:size.width}]}>
+                <View style={[styles.modalTop,styles.itemCenter]}>
+                    <Image style={[styles.modalImage]} source={{uri:'http://wx.wefi.com.cn/images/bulr/Blur_01.jpg'}}></Image>
+                    <Text style={[styles.modalText,styles.paddingVertical]}>点击登陆发表评论</Text>
+                </View>
+                <View style={[styles.modalCenter,styles.borderBottom,styles.fRow]}>
+                    <View style={[styles.UViconBox,styles.fRow,styles.UVborderMR]}>
+                        <Icon name='ios-chatboxes-outline' size={22} color='#333'/>
+                        <Text style={[styles.modalTextIcon]}> 我的留言</Text>
+                    </View>
+
+                    <View style={[styles.UViconBox,styles.fRow]}>
+                        <Icon name='ios-cloud-download' size={22} color='#333'/>
+                        <Text style={[styles.modalTextIcon]}> 我的缓存</Text>
+                    </View>
+                </View>
+                <View style={[styles.modalDown]}>
+                    <View style={[styles.heightQ]}><Text style={[styles.modalTextDown]}>我的缓存</Text></View>
+                    <View style={[styles.heightQ]}><Text style={[styles.modalTextDown]}>意见反馈</Text></View>
+                    <View style={[styles.heightQ]}><Text style={[styles.modalTextDown]}>我要投稿</Text></View>
+                </View>
 
             </Animated.View>
         );
@@ -71,15 +82,15 @@ const MModal = React.createClass({
  */
 
 const Header = React.createClass({
-    getInitialState:function(){
-        return{
-            title:'每日精选',
+    getInitialState: function () {
+        return {
+            title: '每日精选',
         }
     },
 
-    _renderMenu:function(){
+    _renderMenu: function () {
         var icon = 'android-menu';
-        if(this.props.parent.state.modalShow)
+        if (this.props.parent.state.modalShow)
             icon = 'chevron-down';
         return (
             <TouchableOpacity
@@ -89,7 +100,6 @@ const Header = React.createClass({
                 <Icon name={icon} size={23} color='#000'/>
             </TouchableOpacity>
         );
-
     },
 
     render: function () {
@@ -99,14 +109,13 @@ const Header = React.createClass({
                 <View style={[styles.header,styles.bgColor]}>
                     {this._renderMenu()}
 
-                <View style={[styles.items3,styles.itemCenter]}>
-                    <Text style={[styles.headtitle]}>{title}</Text>
+                    <View style={[styles.items3,styles.itemCenter]}>
+                        <Text style={[styles.headtitle]}>{title}</Text>
+                    </View>
+                    <View style={[styles.items3,styles.itemRight,styles.paddingHorizontalA]}>
+                        <Icon name='ios-eye-outline' size={30} color='#000'/>
+                    </View>
                 </View>
-                <View style={[styles.items3,styles.itemRight,styles.paddingHorizontalA]}>
-                    <Icon name='ios-eye-outline' size={30} color='#000'/>
-                </View>
-            </View>
-
             </View>
         );
     }
@@ -137,22 +146,22 @@ const Footer = React.createClass({
     },
     _renderItem(){
         var nav = [
-            {label:'list',text:'每日精选'},
-            {label:'users',text:'发现更多'},
-            {label:'list2',text:'热门排行'},
+            {label: 'list', text: '每日精选'},
+            {label: 'users', text: '发现更多'},
+            {label: 'list2', text: '热门排行'},
         ];
-        return nav.map(function(item,key){
-            var center = key ==1 ? styles.footerItemsCenter : {};
-            var params = {title:item.text};
-           return(
-               <TouchableOpacity
-                   key={key}
-                   style={[styles.items3,styles.itemCenter,center]}
-                   onPress={()=>{Main.goRouter(this,item.label,params)}}
-               >
-                   {this._renderText(item.text, item.label)}
-               </TouchableOpacity>
-           );
+        return nav.map(function (item, key) {
+            var center = key == 1 ? styles.footerItemsCenter : {};
+            var params = {title: item.text};
+            return (
+                <TouchableOpacity
+                    key={key}
+                    style={[styles.items3,styles.itemCenter,center]}
+                    onPress={()=>{Main.goRouter(this,item.label,params)}}
+                >
+                    {this._renderText(item.text, item.label)}
+                </TouchableOpacity>
+            );
         }.bind(this));
     },
 
@@ -207,7 +216,7 @@ const Loading = React.createClass({
         return (
             <View style={[styles.itemCenter]}>
                 <Icon name='load-d' size={size} color='#000'
-                         style={{width:size,height:size,opacity:size*0.01+0.3}}/>
+                      style={{width:size,height:size,opacity:size*0.01+0.3}}/>
                 <Text style={{color:colors.default,fontSize:fontSize.small,marginBottom:10}}>{this.props.text}</Text>
             </View>
         );
@@ -223,13 +232,12 @@ const LoadErr = React.createClass({
         return (
             <View style={[styles.itemCenter,{marginTop:height/3}]}>
                 <Icon name='eye-disabled' size={size} color='#000'
-                         style={{width:size,height:size,opacity:size*0.01+0.3}}/>
+                      style={{width:size,height:size,opacity:size*0.01+0.3}}/>
                 <Text style={{color:colors.default,fontSize:fontSize.h3,marginBottom:10}}>加载失败,点击重试</Text>
             </View>
         );
     }
 });
-
 
 
 /**
@@ -275,9 +283,9 @@ const Style = {
     Layout: Layout,
     Footer: Footer,
     Loading: Loading,
-    LoadErr:LoadErr,
-    MModal:MModal,
-    BackButton:BackButton
+    LoadErr: LoadErr,
+    MModal: MModal,
+    BackButton: BackButton
 
 }
 module.exports = Style;

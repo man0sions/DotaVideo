@@ -17,6 +17,8 @@ var androidHeightP = 0;
 
 if(Platform.OS=="ios")
 {
+    var IosAndrio={height:10,fontSize:14,paddingTop:18};
+    var IosAndrioT={fontSize:10,height:pheight*86}
 
     var { BlurView, VibrancyView } = require('react-native-blur');
 
@@ -38,9 +40,12 @@ else
         }
     });
     androidHeightP=2;
+    var IosAndrio={height:2,fontSize:12,paddingTop:0,}
+    var IosAndrioT={fontSize:8,height:pheight*82}
+
 }
 
-var headHeight = pheight * (8-androidHeightP);
+var headHeight = pheight * 8;
 
 
 /***
@@ -147,7 +152,7 @@ var styles = StyleSheet.create({
             height: 1,
             width: 0
         },
-        paddingTop:18
+        paddingTop:IosAndrio.paddingTop
 
     },
     headicon: {
@@ -211,6 +216,7 @@ var styles = StyleSheet.create({
         height:30
     },
 
+
     /**
      * flex
      * */
@@ -255,13 +261,11 @@ var styles = StyleSheet.create({
 
     borderBottom: {
         borderColor: 'rgba(0,0,0,0.9)',
-        borderBottomWidth: 0.1
+        borderBottomWidth: 0.2
     },
 
     paddingHorizontalA: {
-        paddingHorizontal: 10,
-        //borderWidth: 1,
-        //borderColor: 'blue'
+        paddingHorizontal: 10
     },
 
     /**
@@ -269,7 +273,7 @@ var styles = StyleSheet.create({
      * */
 
     content: {
-        height: pheight*(86-androidHeightP),
+        height: IosAndrioT.height,
         overflow: 'hidden',
         //borderWidth: 1,
         //borderColor: 'blue'
@@ -282,7 +286,7 @@ var styles = StyleSheet.create({
     itemBox: {
         position: 'relative',
         borderColor: 'rgba(0,0,0,0.9)',
-        borderBottomWidth: 0.1
+        borderBottomWidth: 0.2
     },
     Marginauto: {
         width: width-20,
@@ -563,7 +567,7 @@ var styles = StyleSheet.create({
         height: 12,
         overflow: 'hidden',
         color: '#7f7f7f',
-        marginTop: pheight,
+        marginTop: IosAndrio.height,
     },
 
     UVB: {
@@ -585,13 +589,13 @@ var styles = StyleSheet.create({
 
     UVtime: {
         color: '#ff9a00',
-        fontSize: 14,
+        fontSize: IosAndrio.fontSize,
         height: 14
     },
 
     UVminute: {
         color: '#ff9a00',
-        fontSize: 10,
+        fontSize: IosAndrioT.fontSize,
         height: 10
 
     },
@@ -633,9 +637,6 @@ var styles = StyleSheet.create({
 
 
     seeBtn: {
-        color: '#e54847',
-
-        fontSize: 11,
         borderColor: '#e54847',
         borderWidth: 1,
         borderRadius: 4,
@@ -645,6 +646,76 @@ var styles = StyleSheet.create({
         bottom: 0,
         right: 0
     },
+
+    seeText: {
+        color: '#e54847',
+        fontSize: IosAndrioT.fontSize,
+    },
+
+
+
+
+    /**
+     *
+     * modalShow
+     * */
+
+    modalShow: {
+        backgroundColor:'#fff',
+        position:'absolute',
+        height:height
+    },
+
+    modalTop: {
+        width: width,
+        height: pheight*24,
+        paddingBottom: 16
+    },
+
+    modalCenter: {
+        width: width,
+        height: pheight*10,
+        alignItems: 'center',
+    },
+
+    modalDown: {
+        width: width,
+        height: pheight*42,
+        paddingTop: 10,
+    },
+
+
+    modalImage: {
+        width: 60,
+        height: 60,
+        borderRadius: 30,
+    },
+
+    modalText: {
+        fontSize: 14,
+        color: '#333'
+    },
+
+    modalTextIcon: {
+        fontSize: 12,
+        color: '#333',
+        marginTop: 3,
+        marginLeft: 3
+    },
+
+
+    heightQ: {
+        width: width,
+        height: pheight*10,
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+
+    modalTextDown: {
+        fontSize: 16,
+        color: '#333'
+    },
+
 
 });
 
