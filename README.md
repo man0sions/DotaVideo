@@ -1,5 +1,6 @@
 # 一个基于react native 的dota视频app
 
+源项目地址：http://git.oschina.net/man0sions/DotaVideo
 
 ### [android apk下载](https://www.pgyer.com/DotaVideo)
 
